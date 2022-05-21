@@ -22,6 +22,16 @@
 defun copiaMemoria
     // Implementación aquí
     // R0: origen, R1: destino, R2: longitud
+    cmp R2,#0
+    beq 0f    
+    movs R12,#0
+1:    
+    ldrb R3,[R0],#1
+    strb R3,[R1],#1
+    add R12,#1
+    cmp R12,R2
+    bne 1b
+0:    
     bx lr
 endfun copiaMemoria
 
